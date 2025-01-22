@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import Clock from './lessons/lesson1/bert/Clock.tsx'
+import Tclock from './lessons/lesson1/tyler/Clock.tsx'
 
 import { BrowserRouter, Route, Routes } from 'react-router';
 
@@ -21,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
             />,
             <Route
               path="/tyler/lesson/"
-              children={[<Route path="1" element={<div>Lesson 1</div>} />]}
+              children={[<Route path="1" element={<Tclock/>} />]}
             />,
             <Route
               path="/majd/lesson/"
