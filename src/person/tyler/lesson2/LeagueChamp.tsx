@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getData } from '../../../lessons/lesson2/tyler/utils';
+import { getData } from './utils';
 
 const LeagueChamp = () => {
   const [data, setData] = useState();
