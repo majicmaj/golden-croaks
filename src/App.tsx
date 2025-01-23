@@ -22,6 +22,7 @@ function App() {
         <nav className="p-4 bg-gray-500/15 rounded flex gap-8">
           <p>Person: {name}</p>
           <Link to={`${name}/lesson/1`}>Lesson 1</Link>
+          <Link to={`${name}/lesson/2`}>Lesson 2</Link>
         </nav>
 
         <Outlet />
