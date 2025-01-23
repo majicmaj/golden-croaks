@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import Clock from './lessons/lesson1/bert/Clock.tsx'
 import Tclock from './lessons/lesson1/tyler/Clock.tsx'
+import Tchamp from './lessons/lesson2/tyler/LeagueChamp.tsx'
 
 import { BrowserRouter, Route, Routes } from 'react-router';
 
@@ -22,7 +23,7 @@ createRoot(document.getElementById('root')!).render(
             />,
             <Route
               path="/tyler/lesson/"
-              children={[<Route path="1" element={<Tclock/>} />, <Route path="2" element={<div>Lesson 2</div>} />]}
+              children={[<Route path="1" element={<Tclock/>} />, <Route path="2" element={<Tchamp/>} />]}
             />,
             <Route
               path="/majd/lesson/"
