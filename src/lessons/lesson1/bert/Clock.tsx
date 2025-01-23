@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
+import './App.css';
+
+const timeZones = [
+  'America/New_York',
+  'Asia/Shanghai',
+  'Asia/Seoul',
+  'Australia/Sydney',
+  'Europe/Berlin',
+  'Europe/Paris',
+  'Asia/Dubai',
+  'US/Hawaii',
+  'Africa/Timbuktu',
+  'Asia/Tokyo',
+];
 
 function App() {
-  const timeZones = [
-    'America/New_York',
-    'Asia/Shanghai',
-    'Asia/Seoul',
-    'Australia/Sydney',
-    'Europe/Berlin',
-    'Europe/Paris',
-    'Mexico/General',
-    'US/Hawaii',
-    'Africa/Timbuktu',
-    'Asia/Tokyo',
-  ];
-
   const [country, setCountry] = useState('United States');
   const [date, setDate] = useState(new Date());
   const [zone, setZone] = useState('America/New_York');
@@ -22,7 +23,7 @@ function App() {
   });
 
   const handleClick = (tz) => {
-    setCountry('United Kingdom');
+    setCountry(tz.replace('_', ' ').match(/[^\/]+$/g));
     setZone(tz);
   };
 
