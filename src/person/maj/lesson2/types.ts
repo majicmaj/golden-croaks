@@ -8,9 +8,15 @@ export interface ChampionSpell {
 
 export interface ChampionData {
   data: {
-    id: string;
-    name: string;
-    title: string;
-    spells: ChampionSpell[];
+    Nunu: {
+      id: string;
+      name: string;
+      title: string;
+      spells: ChampionSpell[];
+      info: {
+        attack: number;
+        defense: number;
+      };
+    };
   };
 }

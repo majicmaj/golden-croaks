@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate } from 'react-router';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router';
 import './App.css';
 import { useState } from 'react';
 import majRoutes from './person/maj/majRoutes';
@@ -12,7 +12,9 @@ const LESSONS = {
   bert: bertRoutes,
 };
 function App() {
-  const [name, setName] = useState('bert');
+  const location = useLocation();
+  const locationName = location.pathname.split('/')[1];
+  const [name, setName] = useState(locationName || 'bert');
 
   const navigate = useNavigate();
 
@@ -23,11 +25,12 @@ function App() {
 
   return (
     <div className="h-full w-full">
-      <div className="absolute croak-bg" />
-      <div className="p-4 flex flex-col gap-2 absolute h-full w-full">
-        <nav className="p-4 bg-gray-500/15 rounded flex gap-8 items-center">
+      <div className="croak-bg absolute" />
+      <div className="absolute flex h-full w-full flex-col gap-2 p-4">
+        <nav className="flex items-center gap-8 rounded bg-gray-500/15 p-4">
           <select
-            className="bg-gray-100 p-2 dark:bg-gray-500/15 rounded-md"
+            className="rounded-md bg-gray-100 p-2 dark:bg-gray-500/15"
+            value={name}
             onChange={handleNameChange}
           >
             {NAMES.map((name) => (
@@ -46,7 +49,7 @@ function App() {
             ))}
         </nav>
 
-        <div className="h-full p-4 bg-gray-500/15 rounded">
+        <div className="h-full rounded bg-gray-500/15 p-4">
           <Outlet />
         </div>
       </div>
