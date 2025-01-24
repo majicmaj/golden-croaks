@@ -17,7 +17,7 @@ const ManaCost = ({ children }: { children: React.ReactNode }) => (
 );
 
 const StatsBlock = ({ children }: { children: React.ReactNode }) => (
-  <div className="absolute -bottom-[1vmin] -right-[1vmin] rounded-full border-[0.25vmin] border-black bg-amber-300 bg-gradient-to-r from-stone-300/50 to-stone-300/50 px-[2vmin] text-[3vmin] font-bold text-black">
+  <div className="absolute -bottom-[1vmin] -right-[1vmin] rounded-full bg-slate-300 px-[2vmin] text-[3vmin] font-bold text-black">
     {children}
   </div>
 );
@@ -36,15 +36,17 @@ const Card = ({ name, cost, type, description, stats }) => {
   return (
     <CardBase>
       <Pill>
-        <div className="flex items-center justify-between gap-[1vmin]">
+        <div className="flex items-center justify-center gap-[1vmin]">
           <span>{name}</span>
           <ManaCost>{cost}</ManaCost>
         </div>
       </Pill>
-      <img src={URL} className="px-[1vmin]" />
+      <div className="px-[1vmin]">
+        <img src={URL} />
+      </div>
       <Pill>{type}</Pill>
       <div className="relative flex-1 px-[1vmin]">
-        <div className="h-full w-full bg-slate-200/80 p-[1vmin] text-[2.25vmin]">
+        <div className="border-t-none h-full w-full bg-slate-200/80 p-[1vmin] text-[2.25vmin]">
           {description}
         </div>
         <StatsBlock>{stats}</StatsBlock>
