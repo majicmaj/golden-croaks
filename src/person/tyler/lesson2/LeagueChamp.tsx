@@ -51,11 +51,11 @@ const LeagueChamp = () => {
       </div>
       <div className="bg-black text-white  border border-purple-400 rounded-lg h-60 p-3">
         Abandoning the Kinkou Order and her title of the Fist of Shadow, Akali
-        Akali now strikes alone, ready to be the deadly weapon her people need.
-        Though she holds onto all she learned from her master Shen, she has
-        pledged to defend Ionia Crest icon Ionia from its enemies, one kill at a
-        time. Akali may strike in silence, but her message will be heard loud
-        and clear
+        now strikes alone, ready to be the deadly weapon her people need. Though
+        she holds onto all she learned from her master Shen, she has pledged to
+        defend Ionia Crest icon Ionia from its enemies, one kill at a time.
+        Akali may strike in silence, but her message will be heard loud and
+        clear
         <div>"The words on their tombstones will be my new mantras."</div>
       </div>
       <div className="bg-purple-300 text-black w-1/6 text-center absolute bottom-0 right-0 rounded-lg border border-purple-400">
