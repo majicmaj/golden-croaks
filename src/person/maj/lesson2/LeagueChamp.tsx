@@ -20,7 +20,7 @@ function LeagueChamp() {
 
   return (
     <div className="flex h-screen justify-center gap-4">
-      <div className="relative flex aspect-[2/3] h-[100vmin] flex-col gap-1 rounded-[2vh] border-[3vmin] border-black bg-green-700 bg-gradient-to-r from-green-700 to-sky-700 p-4">
+      <div className="relative flex aspect-[2/3] h-[calc(100vmin-64px)] flex-col gap-1 rounded-[2vh] border-[3vmin] border-black bg-green-700 bg-gradient-to-r from-green-700 to-sky-700 p-4">
         <div className="-mx-[1vmin] rounded-full border-[0.25vmin] border-black bg-[#d2be82] p-[0.25vmin] px-[2vmin] text-[3.5vmin] font-bold text-black">
           <div className="flex items-center justify-between">
             <span>{data?.data?.Nunu?.name}</span>
