@@ -46,10 +46,10 @@ const LeagueChamp = () => {
           alt="Champion Splash"
         />
       </div>
-      <div className="border border-purple-400 bg-black scale-y-125 text-xl rounded-lg p-1 px-3">
+      <div className="border border-purple-400 text-white bg-black scale-y-125 text-xl rounded-lg p-1 px-3">
         Human-Ninja
       </div>
-      <div className="bg-black  border border-purple-400 rounded-lg h-60 p-3">
+      <div className="bg-black text-white  border border-purple-400 rounded-lg h-60 p-3">
         Abandoning the Kinkou Order and her title of the Fist of Shadow, Akali
         Akali now strikes alone, ready to be the deadly weapon her people need.
         Though she holds onto all she learned from her master Shen, she has
