@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const timeZones = [
   'America/New_York',
@@ -21,8 +21,8 @@ function App() {
     timeZone: zone,
   });
 
-  const handleClick = (tz) => {
-    setCountry(tz.replace('_', ' ').match(/[^\/]+$/g));
+  const handleClick = (tz: string) => {
+    setCountry(String(tz.replace('_', ' ').match(/[^\/]+$/g)));
     setZone(tz);
   };
 
@@ -38,7 +38,7 @@ function App() {
     <div>
       <div>{country}</div>
       <div>{time}</div>
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex flex-wrap gap-4">
         {timeZones.map((tz) => (
           <button className="border" onClick={() => handleClick(tz)}>
             {tz.replace('_', ' ').match(/[^\/]+$/g)}

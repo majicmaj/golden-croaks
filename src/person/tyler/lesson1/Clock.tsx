@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const LANGUAGES = [
   'Japan',
@@ -30,7 +30,7 @@ function Clock() {
   const [zone, setZone] = useState(TIMEZONES[0]);
   const [language, setLanguage] = useState(LANGUAGES[0]);
 
-  const handleChange = (index) => {
+  const handleChange = (index: number) => {
     setLanguage(LANGUAGES[index]);
     setZone(TIMEZONES[index]);
   };
@@ -51,7 +51,7 @@ function Clock() {
   return (
     <div>
       <h1>{formattedTime}</h1>
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex flex-wrap gap-4">
         {LANGUAGES.map((LANGUAGES, index) => (
           <button onClick={() => handleChange(index)} key={index}>
             {LANGUAGES}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getData } from './utils';
 
 const LeagueChamp = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<any>(null);
 
   const champSplash =
     'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_71.jpg';
@@ -23,33 +23,33 @@ const LeagueChamp = () => {
 
   return (
     <div
-      className="rounded-lg relative w-1/3 p-4 object-cover"
+      className="relative w-1/3 rounded-lg object-cover p-4"
       style={{ background: `url(${background})` }}
     >
       <div className="relative">
         <img
-          className="rounded-full size-8 absolute top-1 right-0 p-1 z-10"
+          className="absolute right-0 top-1 z-10 size-8 rounded-full p-1"
           src={blackManaImg}
           alt="Black Mana"
         />
-        <div className="rounded-full size-6 z-10 absolute top-2 right-8 bg-purple-300 text-black text-center">
+        <div className="absolute right-8 top-2 z-10 size-6 rounded-full bg-purple-300 text-center text-black">
           3
         </div>
       </div>
-      <div className="rounded-lg text-white object-cover scale-y-125 text-xl bg-black font-extrabold border border-purple-400 p-1 px-3">
+      <div className="scale-y-125 rounded-lg border border-purple-400 bg-black object-cover p-1 px-3 text-xl font-extrabold text-white">
         {data?.data?.Akali?.id}
       </div>
       <div>
         <img
-          className="aspect-square  object-cover rounded-lg border border-purple-400"
+          className="aspect-square rounded-lg border border-purple-400 object-cover"
           src={champSplash}
           alt="Champion Splash"
         />
       </div>
-      <div className="border border-purple-400 text-white bg-black scale-y-125 text-xl rounded-lg p-1 px-3">
+      <div className="scale-y-125 rounded-lg border border-purple-400 bg-black p-1 px-3 text-xl text-white">
         Human-Ninja
       </div>
-      <div className="bg-black text-white  border border-purple-400 rounded-lg h-60 p-3">
+      <div className="h-60 rounded-lg border border-purple-400 bg-black p-3 text-white">
         Abandoning the Kinkou Order and her title of the Fist of Shadow, Akali
         now strikes alone, ready to be the deadly weapon her people need. Though
         she holds onto all she learned from her master Shen, she has pledged to
@@ -58,7 +58,7 @@ const LeagueChamp = () => {
         clear
         <div>"The words on their tombstones will be my new mantras."</div>
       </div>
-      <div className="bg-purple-300 text-black w-1/6 text-center absolute bottom-0 right-0 rounded-lg border border-purple-400">
+      <div className="absolute bottom-0 right-0 w-1/6 rounded-lg border border-purple-400 bg-purple-300 text-center text-black">
         5/3
       </div>
     </div>
