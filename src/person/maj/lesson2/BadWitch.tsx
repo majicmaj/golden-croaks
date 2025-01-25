@@ -32,7 +32,19 @@ const CardBase = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-const Card = ({ name, cost, type, description, stats }) => {
+const Card = ({
+  name,
+  cost,
+  type,
+  description,
+  stats,
+}: {
+  name: string;
+  cost: number;
+  type: string;
+  description: React.ReactNode;
+  stats: string;
+}) => {
   return (
     <CardBase>
       <Pill>

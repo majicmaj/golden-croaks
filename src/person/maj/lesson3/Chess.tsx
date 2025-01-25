@@ -22,7 +22,7 @@ const getPiece = (position: number[], boardState: any[]) => {
 };
 
 const Chess = () => {
-  const [boardState, setBoardState] = useState(ALL_PIECES);
+  const [boardState] = useState(ALL_PIECES);
 
   return (
     <div className="flex flex-col items-center">
