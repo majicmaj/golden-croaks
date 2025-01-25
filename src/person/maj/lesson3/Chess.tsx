@@ -21,8 +21,9 @@ const Chess = () => {
   const [selectedSquare, setSelectedSquare] = useState<number[] | null>(null);
 
   const handleClick = (i: number, j: number) => {
+    // Check if square is already selected
     if (selectedSquare && selectedSquare[0] === i && selectedSquare[1] === j) {
-      setSelectedSquare(null);
+      setSelectedSquare(null); // deselect the square
     } else {
       const piece = getBoardPieceAtPosition([i, j], boardState);
       if (piece) {
