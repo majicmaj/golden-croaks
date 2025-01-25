@@ -178,18 +178,3 @@ export const CHESS_SYMBOLS = {
   knight: '♘',
   pawn: '♙',
 };
-
-export const PIECE_MOVE_PATTERNS = {
-  king: [
-    ['plus', 1],
-    ['cross', 1],
-  ],
-  queen: [
-    ['plus', 8],
-    ['cross', 8],
-  ],
-  rook: [['plus', 8]],
-  bishop: [['cross', 8]],
-  knight: [['L', 1]],
-  pawn: [['forward', 1]],
-};
