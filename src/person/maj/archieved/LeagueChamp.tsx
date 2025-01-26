@@ -35,7 +35,7 @@ function LeagueChamp() {
 
             <span className="flex items-center gap-[0.25vmin]">
               <span>
-                <div className="mr-2 flex inline-flex aspect-square h-[3.5vmin] w-[3.5vmin] items-center justify-center rounded-full bg-gray-300">
+                <div className="mr-2 inline-flex aspect-square h-[3.5vmin] w-[3.5vmin] items-center justify-center rounded-full bg-gray-300">
                   <span className="text-[3vmin]">1</span>
                 </div>
               </span>
