@@ -1,8 +1,10 @@
+import { BoardState } from './types';
+
 export const BOARD = Array.from({ length: 8 }, () =>
   Array.from({ length: 8 }, (_, i) => i)
 );
 
-const WHITE_PIECES = [
+const WHITE_PIECES: BoardState = [
   {
     type: 'rook',
     position: [0, 0],
@@ -85,7 +87,7 @@ const WHITE_PIECES = [
   },
 ];
 
-const BLACK_PIECES = [
+const BLACK_PIECES: BoardState = [
   {
     type: 'rook',
     position: [7, 0],
@@ -168,7 +170,7 @@ const BLACK_PIECES = [
   },
 ];
 
-export const ALL_PIECES = [...WHITE_PIECES, ...BLACK_PIECES];
+export const ALL_PIECES: BoardState = [...WHITE_PIECES, ...BLACK_PIECES];
 
 export const CHESS_SYMBOLS = {
   king: '♔',

@@ -1,23 +1,12 @@
 import { useState } from 'react';
-import { ALL_PIECES, BOARD, CHESS_SYMBOLS } from './constants';
+import { ALL_PIECES, BOARD } from './constants';
 import { getBoardPieceAtPosition } from './utils/getPiece';
 import { getBoardCellColor } from './utils/getBoardCellColor';
-
-const Piece = ({ type, color }: { type: string; color: string }) => {
-  const white = 'text-white';
-  const black = 'text-black';
-
-  return (
-    <div className="flex items-center justify-center">
-      <span className={`${color === 'white' ? white : black}`}>
-        {CHESS_SYMBOLS[type as keyof typeof CHESS_SYMBOLS]}
-      </span>
-    </div>
-  );
-};
+import { BoardState } from './types';
+import { Piece } from './Piece';
 
 const Chess = () => {
-  const [boardState] = useState(ALL_PIECES);
+  const [boardState] = useState<BoardState>(ALL_PIECES);
   const [selectedSquare, setSelectedSquare] = useState<[number, number] | null>(
     null
   );
@@ -48,9 +37,7 @@ const Chess = () => {
                   className={`flex h-full w-full items-center justify-center ${getBoardCellColor(i, j, selectedSquare)}`}
                   onClick={() => handleClick(i, j)}
                 >
-                  {getBoardPieceAtPosition([i, j], boardState) && (
-                    <Piece {...getBoardPieceAtPosition([i, j], boardState)} />
-                  )}
+                  <Piece {...getBoardPieceAtPosition([i, j], boardState)} />
                 </div>
               </div>
             ))}
