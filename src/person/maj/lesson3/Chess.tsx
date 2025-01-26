@@ -18,7 +18,9 @@ const Piece = ({ type, color }: { type: string; color: string }) => {
 
 const Chess = () => {
   const [boardState] = useState(ALL_PIECES);
-  const [selectedSquare, setSelectedSquare] = useState<number[] | null>(null);
+  const [selectedSquare, setSelectedSquare] = useState<[number, number] | null>(
+    null
+  );
 
   const handleClick = (i: number, j: number) => {
     // Check if square is already selected
