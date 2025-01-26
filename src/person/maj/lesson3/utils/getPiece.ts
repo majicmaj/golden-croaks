@@ -1,5 +1,5 @@
 export const getBoardPieceAtPosition = (
-  position: number[],
+  position: [number, number],
   boardState: any[]
 ) => {
   return boardState.find(
