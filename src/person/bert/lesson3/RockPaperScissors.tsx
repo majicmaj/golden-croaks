@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-const options = ["Rock", "Paper", "Scissors"]
+const options= ["Rock", "Paper", "Scissors"]
 
 function RockPaperScissors() {
 const [playerOnePick, setPlayerOnePick] = useState("")
@@ -8,22 +8,22 @@ const [playerTwoPick, setPlayerTwoPick] = useState("")
 const [result, setResult] = useState("")
 
 
-const getPlayerTwoPick = (options) => {
+const getPlayerTwoPick = (options: string[]) => {
     const number = Math.floor(Math.random() * options.length)
     setPlayerTwoPick(options[number])
 }
 
-const playRock = (options) => {
+const playRock = (options: string[]) => {
     setPlayerOnePick("Rock")
     getPlayerTwoPick(options)
 }
 
-const playPaper = (options) => {
+const playPaper = (options: string[]) => {
     setPlayerOnePick("Paper")
     getPlayerTwoPick(options)
 }
 
-const playScissors = (options) => {
+const playScissors = (options: string[]) => {
     setPlayerOnePick("Scissors") 
     getPlayerTwoPick(options)
 }
