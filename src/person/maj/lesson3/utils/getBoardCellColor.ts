@@ -1,7 +1,7 @@
 export const getBoardCellColor = (
   i: number,
   j: number,
-  selectedPosition: number[] | null
+  selectedPosition:[number, number] | null
 ) => {
   // Make selected cell green
   if (
