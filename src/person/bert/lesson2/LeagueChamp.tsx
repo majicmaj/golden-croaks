@@ -40,7 +40,7 @@ return (
   </div>
 
   <div className="flex justify-end rounded bg-gradient-to-t from-purple-600 via-blue-800 to-pink-600 shadow-lg relative bottom-2" >
-    <div className="mr-4"> Cloaks TM </div>
+    <div className="mr-4"> Noxus </div>
   </div>
 
 </div>

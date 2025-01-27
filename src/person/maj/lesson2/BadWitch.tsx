@@ -1,5 +1,4 @@
-const URL =
-  'https://cdn.discordapp.com/attachments/1224986110980001832/1332384390180900955/file-DnjT6SkTB752sKfnMegvw2.png?ex=67950f29&is=6793bda9&hm=4e40501f1acc6a4a6c7cc71a89747b4772ba2c4b11a205fd46c1958511575b9c&format=webp&quality=lossless&width=615&height=615';
+import URL from './assets/witch_image.png';
 
 const Pill = ({ children }: { children: React.ReactNode }) => (
   // We make the pill 200% wide and then scale it back to 50% to make the border-radius shrink
