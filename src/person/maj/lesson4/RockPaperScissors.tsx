@@ -5,28 +5,25 @@ import { getRandomPick } from './utils/getRandomPick';
 const OPTIONS = ['Rock', 'Paper', 'Scissors'];
 
 const RockPaperScissors = () => {
-  const [playerOnePick, setPlayerOnePick] = useState<string | null>(null);
-  const [playerTwoPick, setPlayerTwopick] = useState<string | null>(null);
+  const [playerOnePick, setPlayerOnePick] = useState<string>('');
+  const [playerTwoPick, setPlayerTwopick] = useState<string>('');
 
   const [playerOneScore, setPlayerOneScore] = useState<number>(0);
   const [playerTwoScore, setPlayerTwoScore] = useState<number>(0);
 
-  const shoot = () => {
-    if (playerOnePick === playerTwoPick) return; // Draw
+  const shoot = (a, b) => {
+    setPlayerOnePick(a);
+    setPlayerTwopick(b);
+    const score = getResult(a, b);
 
-    const isWin = getResult(playerOnePick, playerTwoPick);
-
-    if (isWin) {
-      setPlayerOneScore(playerOneScore + 1);
-    } else {
-      setPlayerTwoScore(playerTwoScore + 1);
-    }
+    if (score === 1) return setPlayerOneScore(playerOneScore + 1);
+    if (score === -1) return setPlayerTwoScore(playerTwoScore + 1);
   };
 
   const handleClick = (i: number) => {
-    setPlayerOnePick(OPTIONS[i]);
-    setPlayerTwopick(OPTIONS[getRandomPick()]);
-    shoot();
+    const a = OPTIONS[i];
+    const b = OPTIONS[getRandomPick()];
+    shoot(a, b);
   };
 
   return (
@@ -56,8 +53,8 @@ const RockPaperScissors = () => {
       <div className="flex justify-center gap-2">
         {OPTIONS.map((option, i) => (
           <button
-            className="w-1/3 border p-2"
             key={i}
+            className="w-1/3 border p-2"
             onClick={() => handleClick(i)}
           >
             {option}
