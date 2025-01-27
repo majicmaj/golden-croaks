@@ -1,4 +1,5 @@
 import { BoardState } from './../types';
+import getLegalCaptures from './getLegalCaptures';
 import getLegalMoves from './getLegalMoves';
 
 export const getBoardCellColor = (
@@ -17,11 +18,17 @@ export const getBoardCellColor = (
   }
 
   let className = '';
-  // Make legal moves border
   if (selectedPosition) {
+    // Make legal moves border green
+    // Make capture moves border red
     const legalMoves = getLegalMoves(selectedPosition, boardState);
     if (legalMoves?.some((move) => move[0] === i && move[1] === j)) {
-      className += 'border-8 border-green-300 ';
+      className += 'border-8 border-green-500 ';
+    }
+
+    const captureMoves = getLegalCaptures(selectedPosition, boardState);
+    if (captureMoves?.some((move) => move[0] === i && move[1] === j)) {
+      className += 'border-8 border-red-500 ';
     }
   }
 
