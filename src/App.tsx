@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import './App.css';
-import { useState } from 'react';
+import bertRoutes from './person/bert/bertRoutes';
 import majRoutes from './person/maj/majRoutes';
 import tylerRoutes from './person/tyler/tylerRoutes';
-import bertRoutes from './person/bert/bertRoutes';
 
 const NAMES = ['maj', 'tyler', 'bert'];
 const LESSONS = {
