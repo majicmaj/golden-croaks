@@ -7,8 +7,8 @@ const getRandomInt = () => {
 }
 
 const RockPaperScissors = () => {
-    const [choice, setChoice] = useState()
-    const [compChoice, setCompChoice] = useState()
+    const [choice, setChoice] = useState<string>()
+    const [compChoice, setCompChoice] = useState<string>()
 
     const selectRandomComputerChoice = () => {
         const index = getRandomInt()
