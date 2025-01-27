@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { getResult } from './utils/getResult';
 import { getRandomPick } from './utils/getRandomPick';
+import { getResult } from './utils/getResult';
 
 const OPTIONS = ['Rock', 'Paper', 'Scissors'];
 
@@ -11,7 +11,7 @@ const RockPaperScissors = () => {
   const [playerOneScore, setPlayerOneScore] = useState<number>(0);
   const [playerTwoScore, setPlayerTwoScore] = useState<number>(0);
 
-  const shoot = (a, b) => {
+  const shoot = (a: string, b: string) => {
     setPlayerOnePick(a);
     setPlayerTwopick(b);
     const score = getResult(a, b);
