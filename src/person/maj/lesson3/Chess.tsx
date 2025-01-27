@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ALL_PIECES, BOARD } from './constants';
-import { getBoardPieceAtPosition } from './utils/getPiece';
-import { getBoardCellColor } from './utils/getBoardCellColor';
-import { BoardState } from './types';
 import { Piece } from './Piece';
+import { BoardState } from './types';
+import { getBoardCellColor } from './utils/getBoardCellColor';
+import { getBoardPieceAtPosition } from './utils/getPiece';
 
 const Chess = () => {
   const [boardState] = useState<BoardState>(ALL_PIECES);
@@ -34,7 +34,7 @@ const Chess = () => {
                 className="flex h-[10vmin] w-[10vmin] items-center justify-center"
               >
                 <div
-                  className={`flex h-full w-full items-center justify-center ${getBoardCellColor(i, j, selectedSquare)}`}
+                  className={`flex h-full w-full items-center justify-center ${getBoardCellColor(i, j, selectedSquare, boardState)}`}
                   onClick={() => handleClick(i, j)}
                 >
                   <Piece {...getBoardPieceAtPosition([i, j], boardState)} />
