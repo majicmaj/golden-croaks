@@ -3,3 +3,4 @@ export const getWinner = (a : number, b: number) => {
     else if (b === 0) return "Good ol fashioned win brah 🦍💯💪"
     return null
   }
+  

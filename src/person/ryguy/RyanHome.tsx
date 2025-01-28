@@ -1,4 +1,4 @@
-const MajHome = () => {
+const RyanHome = () => {
   return (
     <div>
       <h1>Hey there, I'm Ryan, Maj when d&d</h1>

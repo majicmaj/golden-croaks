@@ -63,7 +63,7 @@ function RockPaperScissors() {
         <div className="flex justify-center">
           <button
             className="mb-1 rounded border-2 border-black bg-purple-600 pl-1 pr-1 font-semibold"
-            onClick={() => resetGame()}>
+            onClick={resetGame}>
             Restart
           </button>
         </div>
