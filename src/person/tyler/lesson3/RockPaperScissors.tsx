@@ -6,9 +6,24 @@ const getRandomInt = () => {
     return Math.floor(Math.random() * CHOICES.length)
 }
 
+const determineWinner = (player: string, computer: string) => {
+    if (player === computer) {
+      return "It's a tie!";
+    }
+    if (
+      (player === 'Rock' && computer === 'Scissors') ||
+      (player === 'Paper' && computer === 'Rock') ||
+      (player === 'Scissors' && computer === 'Paper')
+    ) {
+      return 'You win!';
+    }
+    return 'Defeat!';
+  };
+
 const RockPaperScissors = () => {
     const [choice, setChoice] = useState<string>()
     const [compChoice, setCompChoice] = useState<string>()
+    const [winner, setWinner] = useState<string>()
 
     const selectRandomComputerChoice = () => {
         const index = getRandomInt()
@@ -18,15 +33,29 @@ const RockPaperScissors = () => {
     const handleclick = (index: number) => {
         setChoice(CHOICES[index])
         selectRandomComputerChoice()
-    }
+
+        const computerChoice = CHOICES[getRandomInt()];
+        setCompChoice(computerChoice);
+
+        
+        setWinner(determineWinner(choice, computerChoice));
+    };
+
+
+    
     
 return(
-    <div>
-        <div>{choice}</div>
-        <div>{compChoice}</div>
-        <button className="p-2" onClick={() => handleclick(0)}>Rock</button>
-        <button className="p-2" onClick={() => handleclick(1)}>Paper</button>
-        <button className="p-2" onClick={() => handleclick(2)}>Scissors</button>
+    <div className="grid text-lg border w-1/3 ">
+        <div className="justify-center py-8 space-x-6 inline-flex">
+          <div>{choice}</div>
+          <div>{compChoice}</div>
+        </div>
+        <div className="inline-flex justify-center">
+          <button className="p-2" onClick={() => handleclick(0)}>Rock</button>
+          <button className="p-2" onClick={() => handleclick(1)}>Paper</button>
+          <button className="p-2" onClick={() => handleclick(2)}>Scissors</button>
+          </div>
+        <div className="flex justify-center m-8">{winner}</div>
     </div>
     )
 }
