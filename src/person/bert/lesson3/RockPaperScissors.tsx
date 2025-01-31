@@ -46,7 +46,7 @@ function RockPaperScissors() {
         <div className="flex justify-between">
           <div className="ml-2 flex w-[140px] flex-col">
             <div className="border-1 rounded border-2 border-black bg-gray-400 font-semibold">
-              {/* Using -mb-6 and z-10 to keep the PlayerOneHp on top of the green and grey divs */}
+              {/* Using negative margin to stack the text over the green bar */}
               <div className="z-10 -mb-6 text-center">{playerOneHp}</div>
               <div
                 className="h-[28px] rounded border-2 border-black bg-green-500"
@@ -59,7 +59,7 @@ function RockPaperScissors() {
           </div>
           <div className="mr-2 flex w-[140px] flex-col">
             <div className="border-1 rounded border-2 border-black bg-gray-400 font-semibold">
-              {/* Using -mb-6 and z-10 to keep the PlayerOneHp on top of the green and grey divs */}
+              {/* Using negative margin to stack the text over the green bar */}
               <div className="z-10 -mb-6 text-center">{playerTwoHp}</div>
               <div
                 className="h-[28px] rounded border-2 border-black bg-green-500"
