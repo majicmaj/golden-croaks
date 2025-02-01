@@ -1,14 +1,14 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
+import App from './App';
 
 import { BrowserRouter, Route, Routes } from 'react-router';
 
 import './index.css';
-import bertRoutes from './person/bert/bertRoutes.tsx';
-import majRoute from './person/maj/majRoutes.tsx';
-import tylerRoutes from './person/tyler/tylerRoutes.tsx';
-import ryanRoutes from './person/ryguy/ryanRoutes.tsx';
+import bertRoutes from './person/bert/bertRoutes';
+import majRoute from './person/maj/majRoutes';
+import tylerRoutes from './person/tyler/tylerRoutes';
+import ryanRoutes from './person/ryan/bryanRoutes';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

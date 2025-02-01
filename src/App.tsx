@@ -4,7 +4,7 @@ import './App.css';
 import bertRoutes from './person/bert/bertRoutes';
 import majRoutes from './person/maj/majRoutes';
 import tylerRoutes from './person/tyler/tylerRoutes';
-import ryanRoutes from './person/ryguy/ryanRoutes';
+import ryanRoutes from './person/ryan/bryanRoutes';
 
 const LESSONS = {
   maj: majRoutes,
