@@ -5,7 +5,7 @@ import Chess from './lesson3/Chess';
 import RockPaperScissors from './lesson4/RockPaperScissors';
 
 const RyanRoutes = [
-  <Route path="/Ryan" element={<RyanHome />} />,
+  <Route path="/ryan" element={<RyanHome />} />,
   <Route path="1" element={<div>Lesson 1</div>} />,
   <Route path="2" element={<BadWitch />} />,
   <Route path="3" element={<Chess />} />,
