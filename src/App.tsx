@@ -4,13 +4,16 @@ import './App.css';
 import bertRoutes from './person/bert/bertRoutes';
 import majRoutes from './person/maj/majRoutes';
 import tylerRoutes from './person/tyler/tylerRoutes';
+import ryanRoutes from './person/ryguy/ryanRoutes';
 
-const NAMES = ['maj', 'tyler', 'bert'];
 const LESSONS = {
   maj: majRoutes,
   tyler: tylerRoutes,
   bert: bertRoutes,
+  ryan: ryanRoutes,
 };
+
+const NAMES = Object.keys(LESSONS);
 
 function App() {
   const location = useLocation();
