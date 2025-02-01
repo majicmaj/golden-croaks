@@ -8,7 +8,7 @@ import './index.css';
 import bertRoutes from './person/bert/bertRoutes.tsx';
 import majRoute from './person/maj/majRoutes.tsx';
 import tylerRoutes from './person/tyler/tylerRoutes.tsx';
-import RyanRoutes from './person/ryguy/RyanRoutes.tsx';
+import ryanRoutes from './person/ryguy/ryanRoutes.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/bert" children={bertRoutes} />
           <Route path="/maj" children={majRoute} />
           <Route path="/tyler" children={tylerRoutes} />
-          <Route path="/ryan" children={RyanRoutes} />
+          <Route path="/ryan" children={ryanRoutes} />
         </Route>
       </Routes>
     </BrowserRouter>

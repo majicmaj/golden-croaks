@@ -4,13 +4,13 @@ import './App.css';
 import bertRoutes from './person/bert/bertRoutes';
 import majRoutes from './person/maj/majRoutes';
 import tylerRoutes from './person/tyler/tylerRoutes';
-import RyanRoutes from './person/ryguy/RyanRoutes';
+import ryanRoutes from './person/ryguy/ryanRoutes';
 
 const LESSONS = {
   maj: majRoutes,
   tyler: tylerRoutes,
   bert: bertRoutes,
-  ryan: RyanRoutes,
+  ryan: ryanRoutes,
 };
 
 const NAMES = Object.keys(LESSONS);
