@@ -1,8 +1,8 @@
 import { Route } from 'react-router';
+import RyanHome from './RyanHome';
 import BadWitch from './lesson2/BadWitch';
 import Chess from './lesson3/Chess';
 import RockPaperScissors from './lesson4/RockPaperScissors';
-import RyanHome from './RyanHome';
 
 const RyanRoutes = [
   <Route path="/Ryan" element={<RyanHome />} />,
