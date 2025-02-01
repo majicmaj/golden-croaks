@@ -8,7 +8,7 @@ import './index.css';
 import bertRoutes from './person/bert/bertRoutes';
 import majRoute from './person/maj/majRoutes';
 import tylerRoutes from './person/tyler/tylerRoutes';
-import ryanRoutes from './person/ryan/bryanRoutes';
+import ryanRoutes from './person/ryan/ryanRoutes';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
