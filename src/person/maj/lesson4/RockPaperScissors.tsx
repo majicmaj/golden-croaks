@@ -11,8 +11,6 @@ const RockPaperScissors = () => {
   const [playerOneScore, setPlayerOneScore] = useState<number>(0);
   const [playerTwoScore, setPlayerTwoScore] = useState<number>(0);
 
-  const roundCount = playerOneScore + playerTwoScore;
-
   const shoot = (a: string, b: string) => {
     setPlayerOnePick(a);
     setPlayerTwopick(b);
