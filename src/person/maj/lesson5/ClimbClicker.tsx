@@ -66,6 +66,8 @@ const LeagueOfLegendsClimbClicker = () => {
     }
   };
 
+  const isLocal = window.location.hostname === 'localhost';
+
   return (
     <div className="grid h-full grid-cols-1 place-items-center gap-8 overflow-auto md:grid-cols-[auto,1fr]">
       <Sidebar
@@ -120,7 +122,7 @@ const LeagueOfLegendsClimbClicker = () => {
           />
           <div className="absolute">PLAY</div>
         </button>
-        <button onClick={play50Times}>50</button>
+        {isLocal && <button onClick={play50Times}>50</button>}
       </main>
     </div>
   );
