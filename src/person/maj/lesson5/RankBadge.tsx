@@ -43,12 +43,10 @@ const RankBadge = ({
         />
       </div>
 
-      {maxLp > 0 && (
-        <div className="text-center text-sm italic">
-          <span>Peak Rank - </span>
-          <span>{getFullRank(maxLp)}</span>
-        </div>
-      )}
+      <div className="text-center text-sm italic">
+        <span>Peak Rank - </span>
+        <span>{maxLp ? getFullRank(maxLp) : '_'}</span>
+      </div>
 
       <div className="text-center">
         {lastLpPerWin > 0 ? (

@@ -81,10 +81,7 @@ const LeagueOfLegendsClimbClicker = () => {
           <div className="flex items-center gap-2">
             <span>Winrate {(winrate * 100).toFixed(0)}%</span>
           </div>
-          <div className="flex items-center gap-2">
-            <span>Winrate Mod {winrateMod}</span>
-            <span>LP mod {winrateLpMod.toFixed(2)}</span>
-          </div>
+
           <div className="flex items-center gap-2">
             <span className="flex items-center gap-1">
               <img src={gold_icon} />
