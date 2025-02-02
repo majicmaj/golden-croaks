@@ -76,7 +76,6 @@ const LeagueOfLegendsClimbClicker = () => {
             <span>
               {wins}W {losses}L
             </span>
-            <span>{lp}lp</span>
           </div>
           <div className="flex items-center gap-2">
             <span>Winrate {(winrate * 100).toFixed(0)}%</span>
