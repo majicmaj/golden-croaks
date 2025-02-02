@@ -34,8 +34,13 @@ const RankBadge = ({
         alt={rank}
         className="-m-[10%] aspect-square h-[40vmin] max-h-[500px] min-h-[250px]"
       />
-      <div className="rounded border-2 border-slate-500 bg-slate-800 px-4 py-1 text-center">
+      <div className="relative overflow-hidden rounded border-2 border-teal-500 bg-slate-800 px-8 py-1 text-center">
         {rank} {division}
+        <img
+          src={src}
+          alt={rank}
+          className="absolute left-0 right-0 -translate-y-1/2 opacity-60 blur-md"
+        />
       </div>
 
       {maxLp > 0 && (
