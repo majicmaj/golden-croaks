@@ -1,57 +1,62 @@
-import unranked from './assets/unranked.webp';
-import iron from './assets/iron.webp';
-import bronze from './assets/bronze.webp';
-import silver from './assets/silver.webp';
-import gold from './assets/gold.webp';
-import platinum from './assets/platinum.webp';
-import emerald from './assets/emerald.webp';
-import diamond from './assets/diamond.webp';
-import master from './assets/master.webp';
-import grandmaster from './assets/grandmaster.webp';
-import challenger from './assets/challenger.webp';
+import { MASTER_LP, LP_PER_DIVISION, RANKS_SOURCE_MAP } from './constant';
+import { getFullRank } from './utils';
 
-const RANKS_SOURCE_MAP = {
-  Unranked: unranked,
-  Iron: iron,
-  Bronze: bronze,
-  Silver: silver,
-  Gold: gold,
-  Platinum: platinum,
-  Emerald: emerald,
-  Diamond: diamond,
-  Master: master,
-  Grandmaster: grandmaster,
-  Challenger: challenger,
+// Visible LP is always 0-100 unless in Masters+
+const getVisibleLp = (lp: number) => {
+  if (lp >= MASTER_LP) return lp - MASTER_LP;
+  return (lp % LP_PER_DIVISION).toFixed(0);
 };
+
+const getBadge = (rank: string) =>
+  rank in RANKS_SOURCE_MAP
+    ? RANKS_SOURCE_MAP[rank as keyof typeof RANKS_SOURCE_MAP]
+    : RANKS_SOURCE_MAP['Unranked'];
 
 const RankBadge = ({
   rank,
   division,
   lp,
+  lastLpPerWin,
+  maxLp,
 }: {
   rank: string;
   division: string;
   lp: number;
+  lastLpPerWin: number;
+  maxLp: number;
 }) => {
-  const src =
-    rank in RANKS_SOURCE_MAP
-      ? RANKS_SOURCE_MAP[rank as keyof typeof RANKS_SOURCE_MAP]
-      : unranked;
+  const src = getBadge(rank);
 
   return (
     <div className="grid place-items-center gap-4">
       <img
         src={src}
         alt={rank}
-        className="aspect-square h-[50vmin] max-h-[500px] min-h-[250px]"
+        className="-m-[10%] aspect-square h-[40vmin] max-h-[500px] min-h-[250px]"
       />
       <div className="rounded border-2 border-slate-500 bg-slate-800 px-4 py-1 text-center">
         {rank} {division}
       </div>
+
+      {maxLp > 0 && (
+        <div className="text-center text-sm italic">
+          <span>Peak Rank - </span>
+          <span>{getFullRank(maxLp)}</span>
+        </div>
+      )}
+
+      <div className="text-center">
+        {lastLpPerWin > 0 ? (
+          <span className="text-green-500">+{lastLpPerWin.toFixed(0)} LP</span>
+        ) : (
+          <span className="text-red-500">{lastLpPerWin.toFixed(0)} LP</span>
+        )}
+      </div>
       <div className="flex items-end gap-2">
-        <span className="text-6xl">{lp.toFixed(0)}</span>
+        <span className="text-6xl">{getVisibleLp(lp)}</span>
         <span className="text-sm">LP</span>
       </div>
+      {/* Show Peak Rank */}
     </div>
   );
 };
