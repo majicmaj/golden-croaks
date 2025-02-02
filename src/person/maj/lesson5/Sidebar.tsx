@@ -10,7 +10,6 @@ interface Sidebar {
   play: () => void;
 }
 const Sidebar = ({ gold, setGold, setWinrateMod, setLp, play }: Sidebar) => {
-  const [purchasedCount, setPurchasedCount] = React.useState({});
   const upgrades = [
     {
       name: 'Watch Pro VOD',
