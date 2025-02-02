@@ -60,7 +60,7 @@ const LeagueOfLegendsClimbClicker = () => {
   //   }
 
   return (
-    <div className="grid h-full grid-cols-[auto,1fr] place-items-center gap-4">
+    <div className="grid h-full grid-cols-1 place-items-center gap-8 overflow-auto md:grid-cols-[auto,1fr]">
       <Sidebar
         gold={gold}
         setGold={setGold}
@@ -70,7 +70,7 @@ const LeagueOfLegendsClimbClicker = () => {
         play={play}
       />
 
-      <main className="grid h-full place-items-center gap-2 font-serif text-xl">
+      <main className="grid h-full place-items-center gap-8 font-serif text-xl">
         <div>
           <div className="flex items-center gap-2">
             <span>
