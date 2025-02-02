@@ -1,75 +1,121 @@
 import { useState } from 'react';
 import RankBadge from './RankBadge';
-
-const RANKS_WITH_DIVISIONS = [
-  'Iron',
-  'Bronze',
-  'Silver',
-  'Gold',
-  'Platinum',
-  'Emerald',
-  'Diamond',
-];
-
-// const MASTERS_PLUS = ['Master', 'Grandmaster', 'Challenger'];
-
-const LP_PER_DIVISION = 100;
-const DIVISIONS = 4;
-const MASTER_LP = DIVISIONS * LP_PER_DIVISION * 7;
-const GRANDMASTER_LP = MASTER_LP + 200;
-const CHALLENGER_LP = GRANDMASTER_LP + 300;
-
-const BASE_LP = 20;
+import gold_icon from './assets/ui/gold_icon.png';
+import { BASE_LP } from './constant';
+import Sidebar from './Sidebar';
+import { getRank, getRomanNumeral, getDivision } from './utils';
 
 // All ranks are 100 LP apart, except challenger is 300 LP away from Grandmaster
-const getRank = (lp: number) => {
-  if (lp >= CHALLENGER_LP) return 'Challenger';
-  if (lp >= GRANDMASTER_LP) return 'Grandmaster';
-  if (lp >= MASTER_LP) return 'Master';
-  return RANKS_WITH_DIVISIONS[Math.floor(lp / LP_PER_DIVISION / DIVISIONS)];
-};
-
-const getDivision = (lp: number) => {
-  if (lp >= CHALLENGER_LP) return 0;
-  if (lp >= GRANDMASTER_LP) return 0;
-  if (lp >= MASTER_LP) return 0;
-  return (Math.floor(lp / LP_PER_DIVISION) % DIVISIONS) + 1;
-};
-
-const getRomanNumeral = (n: number) => {
-  if (n === 0) return '';
-  const romanNumerals = ['I', 'II', 'III', 'IV'];
-  return romanNumerals[n - 1];
-};
 
 const LeagueOfLegendsClimbClicker = () => {
   const [lp, setLp] = useState(0);
+  const [maxLp, setMaxLp] = useState(0);
+  const [gold, setGold] = useState(0);
+
+  const [wins, setWins] = useState(0);
+  const [losses, setLosses] = useState(0);
+
+  const [winrateMod, setWinrateMod] = useState(0);
+
+  const [lastLpPerWin, setLastLpPerWin] = useState(0);
+
+  const winrate = (wins || 1) / (wins + losses || 2);
 
   const rank = getRank(lp);
   const division = getRomanNumeral(getDivision(lp));
 
-  const randomWinLossMod = Math.random() > 0.5 ? 1 : -1;
-  const lpPerGame = (BASE_LP + (Math.random() * 10 - 10)) * randomWinLossMod;
+  // more lp when winning more and less when losing more than 50% of games
+  const winrateLpMod = (winrate - 0.5) * BASE_LP;
+
+  // make it harder to win the more LP, from 0.4 in iron to 0.8 in challenger
 
   const play = () => {
-    setLp(lp + lpPerGame);
+    const randomWinLossMod = Math.random() * 0.2 - 0.1;
+    const winLossMod =
+      Math.random() - lp / 10000 > winrate / 2 + randomWinLossMod ? 1 : -1;
+    const lpPerGame = Math.floor(
+      (BASE_LP + winrateLpMod) * (1 + winrateMod / 10000) * winLossMod
+    );
+    setLastLpPerWin(lpPerGame);
+    setLp((prev) => Math.max(0, prev + lpPerGame));
+
+    const isWin = lpPerGame > 0;
+    if (isWin) {
+      setWins((prev) => prev + 1);
+      setGold((prev) => prev + 2);
+    } else {
+      setLosses((prev) => prev + 1);
+      //   setGold((prev) => prev +0);
+    }
+
+    // update max lp
+    if (lp > maxLp) {
+      setMaxLp(lp);
+    }
+  };
+
+  const play50Times = () => {
+    for (let i = 0; i < 50; i++) {
+      play();
+    }
   };
 
   return (
-    <div className="grid h-full place-items-center gap-2 font-serif text-xl">
-      <RankBadge rank={rank} division={division} lp={lp} />
+    <div className="grid h-full grid-cols-[auto,1fr] place-items-center gap-4">
+      <Sidebar
+        gold={gold}
+        setGold={setGold}
+        setWinrateMod={setWinrateMod}
+        setLp={setLp}
+        setWins={setWins}
+        play={play}
+      />
 
-      <button className="relative grid h-12 w-40 place-items-center">
-        <div
-          className="h-full w-full border-[3.5px] border-b-[4px] border-t-[3px] border-teal-500 bg-slate-800 transition-all hover:brightness-150"
-          style={{
-            transform: 'perspective(100px) rotateX(-30deg)',
-          }}
-        />
-        <div className="absolute" onClick={play}>
-          PLAY
+      <main className="grid h-full place-items-center gap-2 font-serif text-xl">
+        <div>
+          <div className="flex items-center gap-2">
+            <span>
+              {wins}W {losses}L
+            </span>
+            <span>{lp}lp</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span>Winrate {(winrate * 100).toFixed(0)}%</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span>Winrate Mod {winrateMod}</span>
+            <span>LP mod {winrateLpMod.toFixed(2)}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1">
+              <img src={gold_icon} />
+            </span>
+            <span>{gold}</span>
+          </div>
         </div>
-      </button>
+
+        <RankBadge
+          rank={rank}
+          division={division}
+          lp={lp}
+          lastLpPerWin={lastLpPerWin}
+          maxLp={maxLp}
+        />
+
+        <button
+          className="relative grid h-12 w-40 place-items-center"
+          onClick={play}
+        >
+          <div
+            className="h-full w-[90%] border-[3.5px] border-b-[4px] border-t-[3px] border-teal-500 bg-slate-800 transition-all hover:brightness-150"
+            style={{
+              transform: 'perspective(100px) rotateX(-30deg)',
+            }}
+          />
+          <div className="absolute">PLAY</div>
+        </button>
+        <button onClick={play50Times}>50</button>
+      </main>
     </div>
   );
 };
