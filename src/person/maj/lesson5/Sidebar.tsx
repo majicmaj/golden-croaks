@@ -10,16 +10,15 @@ interface Sidebar {
   play: () => void;
 }
 const Sidebar = ({ gold, setGold, setWinrateMod, setLp, play }: Sidebar) => {
+  const [purchasedCount, setPurchasedCount] = React.useState({});
   const upgrades = [
     {
       name: 'Watch Pro VOD',
       cost: 10,
-      description: 'Winrate +1%',
+      description: '+0.1 Skill Mod',
       buy: () => {
-        if (gold >= 10) {
-          setGold((prev) => prev - 10);
-          setWinrateMod((prev) => prev + 1);
-        }
+        setGold((prev) => prev - 10);
+        setWinrateMod((prev) => prev + 0.1);
       },
     },
     {
@@ -27,72 +26,50 @@ const Sidebar = ({ gold, setGold, setWinrateMod, setLp, play }: Sidebar) => {
       cost: 10,
       description: '5% chance for +1000 gold',
       buy: () => {
-        if (gold >= 10) {
-          setGold((prev) => prev - 10);
-          if (Math.random() > 0.95) {
-            setGold((prev) => prev + 1000);
-          }
-        }
-      },
-    },
-
-    {
-      name: 'Read patch notes',
-      cost: 10,
-      description: '50% chance for +winrate',
-      buy: () => {
-        if (gold >= 10) {
-          setGold((prev) => prev - 10);
-          if (Math.random() > 0.5) {
-            setWinrateMod((prev) => prev + Math.random() * 2);
-          }
+        setGold((prev) => prev - 10);
+        if (Math.random() > 0.95) {
+          setGold((prev) => prev + 1000);
         }
       },
     },
     {
       name: 'Rage Queue',
-      cost: 100,
+      cost: 10,
       description: 'Play 10 games in a row',
       buy: () => {
-        if (gold >= 100) {
-          setGold((prev) => prev - 100);
-          for (let i = 0; i < 10; i++) {
-            play();
-          }
+        setGold((prev) => prev - 10);
+        for (let i = 0; i < 10; i++) {
+          play();
         }
       },
     },
 
     {
-      name: 'Hire a Coach',
+      name: 'Get Coaching',
       cost: 500,
-      description: 'Winrate +5%',
+      description: '+ (0-10) Skill mod',
       buy: () => {
-        if (gold >= 50) {
-          setGold((prev) => prev - 50);
-          setWinrateMod((prev) => prev + 5);
-        }
+        setGold((prev) => prev - 500);
+        setWinrateMod((prev) => prev + Math.random() * 10);
       },
     },
     {
-      name: 'Scripting Software',
+      name: 'Scripting',
       cost: 1000,
-      description: 'Increase winrate by 10%',
+      description: '+10 Skill mod',
       buy: () => {
-        if (gold >= 1000) {
-          setGold((prev) => prev - 1000);
-          setWinrateMod((prev) => prev + 10);
-        }
+        setGold((prev) => prev - 1000);
+        setWinrateMod((prev) => prev + 10);
       },
     },
 
     {
       name: 'Get boosted',
-      cost: 2000,
-      description: 'Instantly gain 2000 LP',
+      cost: 1000,
+      description: '+100 LP',
       buy: () => {
-        if (gold >= 2000) {
-          setGold((prev) => prev - 2000);
+        if (gold >= 1000) {
+          setGold((prev) => prev - 1000);
           setLp((prev) => prev + 100);
         }
       },
@@ -105,7 +82,7 @@ const Sidebar = ({ gold, setGold, setWinrateMod, setLp, play }: Sidebar) => {
         <div key={i} className="flex flex-col gap-2">
           <button
             disabled={gold < upgrade.cost}
-            className="flex flex-col justify-between gap-2 rounded border-2 border-teal-500 bg-slate-800 p-2 px-3 text-white disabled:opacity-50"
+            className="flex flex-col justify-between gap-0 rounded border-2 border-teal-500 bg-slate-800 p-2 px-3 text-white disabled:opacity-50"
             onClick={upgrade.buy}
           >
             <div className="flex w-full justify-between">
@@ -115,7 +92,9 @@ const Sidebar = ({ gold, setGold, setWinrateMod, setLp, play }: Sidebar) => {
                 {upgrade.cost}
               </span>
             </div>
-            <span className="text-sm italic">{upgrade.description}</span>
+            <span className="text-sm italic opacity-70">
+              {upgrade.description}
+            </span>
           </button>
         </div>
       ))}

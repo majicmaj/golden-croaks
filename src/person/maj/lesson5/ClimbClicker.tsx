@@ -15,11 +15,11 @@ const LeagueOfLegendsClimbClicker = () => {
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
 
-  const [winrateMod, setWinrateMod] = useState(0);
+  const [winrateMod, setWinrateMod] = useState(1);
 
   const [lastLpPerWin, setLastLpPerWin] = useState(0);
 
-  const winrate = (wins || 1) / (wins + losses || 2);
+  const winrate = wins / (wins + losses || 1);
 
   const rank = getRank(lp);
   const division = getRomanNumeral(getDivision(lp));
@@ -31,11 +31,17 @@ const LeagueOfLegendsClimbClicker = () => {
 
   const play = () => {
     const randomWinLossMod = Math.random() * 0.2 - 0.1;
+
     const winLossMod =
-      Math.random() - lp / 10000 > winrate / 2 + randomWinLossMod ? 1 : -1;
+      Math.log(winrateMod) / 10 + Math.random() - lp / 10000 >
+      winrate / 2 + randomWinLossMod
+        ? 1
+        : -1;
+
     const lpPerGame = Math.floor(
       (BASE_LP + winrateLpMod) * (1 + winrateMod / 10000) * winLossMod
     );
+
     setLastLpPerWin(lpPerGame);
     setLp((prev) => Math.max(0, prev + lpPerGame));
 
@@ -54,10 +60,11 @@ const LeagueOfLegendsClimbClicker = () => {
     }
   };
 
-  // const play50Times = () => {
-  //   for (let i = 0; i < 50; i++) {
-  //     play();
-  //   }
+  const play50Times = () => {
+    for (let i = 0; i < 50; i++) {
+      play();
+    }
+  };
 
   return (
     <div className="grid h-full grid-cols-1 place-items-center gap-8 overflow-auto md:grid-cols-[auto,1fr]">
@@ -79,6 +86,10 @@ const LeagueOfLegendsClimbClicker = () => {
           </div>
           <div className="flex items-center gap-2">
             <span>Winrate {(winrate * 100).toFixed(0)}%</span>
+          </div>
+
+          <div>
+            <span>Skill mod +{winrateMod.toFixed(1)}</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -109,7 +120,7 @@ const LeagueOfLegendsClimbClicker = () => {
           />
           <div className="absolute">PLAY</div>
         </button>
-        {/* <button onClick={play50Times}>50</button> */}
+        <button onClick={play50Times}>50</button>
       </main>
     </div>
   );
