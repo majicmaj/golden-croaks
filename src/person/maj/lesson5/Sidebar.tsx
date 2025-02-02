@@ -89,10 +89,10 @@ const Sidebar = ({ gold, setGold, setWinrateMod, setLp, play }: Sidebar) => {
     {
       name: 'Get boosted',
       cost: 2000,
-      description: 'Instantly gain 100 LP',
+      description: 'Instantly gain 2000 LP',
       buy: () => {
-        if (gold >= 100) {
-          setGold((prev) => prev - 100);
+        if (gold >= 2000) {
+          setGold((prev) => prev - 2000);
           setLp((prev) => prev + 100);
         }
       },

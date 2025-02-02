@@ -54,11 +54,10 @@ const LeagueOfLegendsClimbClicker = () => {
     }
   };
 
-  const play50Times = () => {
-    for (let i = 0; i < 50; i++) {
-      play();
-    }
-  };
+  // const play50Times = () => {
+  //   for (let i = 0; i < 50; i++) {
+  //     play();
+  //   }
 
   return (
     <div className="grid h-full grid-cols-[auto,1fr] place-items-center gap-4">
@@ -114,7 +113,7 @@ const LeagueOfLegendsClimbClicker = () => {
           />
           <div className="absolute">PLAY</div>
         </button>
-        <button onClick={play50Times}>50</button>
+        {/* <button onClick={play50Times}>50</button> */}
       </main>
     </div>
   );
